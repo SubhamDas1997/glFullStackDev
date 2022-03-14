@@ -1,0 +1,2 @@
+module OOPsLab1Solution {
+}
