@@ -203,7 +203,7 @@ SELECT
     CASE
         WHEN RAT_RATSTARS = 5 THEN 'Excellent Service'
         WHEN RAT_RATSTARS = 4 THEN 'Good Service'
-        WHEN RAT_RATSTARS > 2 THEN 'Average Service'
+        WHEN RAT_RATSTARS >= 2 THEN 'Average Service'
         ELSE 'Poor Service'
     END AS Type_of_Service
 FROM
