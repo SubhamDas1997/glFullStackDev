@@ -79,7 +79,7 @@ public class StudentController {
 		ModelAndView model = new ModelAndView();
 		
 		if(user != null)
-			model.addObject("msg", "Hey, " + user.getName() + ", you are not allowed to access this page!!");
+			model.addObject("msg", "Hey " + user.getName() + ", you are not allowed to access this page!!");
 		else
 			model.addObject("msg", "Hey guest, you are not allowed to access this page!!");
 		
