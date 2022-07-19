@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee findEmployeeById(int employeeId) {
+	public Employee findEmployeeById(Integer employeeId) {
 		Optional<Employee> obj = employeeRepo.findById(employeeId);
 		Employee emp = null;
 		if (obj.isPresent())

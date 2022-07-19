@@ -38,7 +38,11 @@ public class User {
 	private String username;
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "id"))
 	private List<Role> userRoles = new ArrayList<>();
+	
+	public void addRole(Role role) {
+		this.userRoles.add(role);
+	}
 }

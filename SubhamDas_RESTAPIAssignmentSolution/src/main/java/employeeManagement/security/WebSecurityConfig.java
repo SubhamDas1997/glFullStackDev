@@ -42,14 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/employees").hasAuthority("ADMIN")
-			.antMatchers(HttpMethod.DELETE, "/employees/{employeeId}").hasAuthority("ADMIN")
-			.antMatchers(HttpMethod.PUT, "/employees").hasAnyAuthority("ADMIN", "USER")
-			.antMatchers(HttpMethod.GET, "/", "/employees", "/employees/{employeeId}", "/employees/sort").hasAnyAuthority("ADMIN", "USER")
+			.antMatchers("/h2-console/**").permitAll()
+			.antMatchers("/roles/**", "/users/**").hasAuthority("OWNER")
+			.antMatchers(HttpMethod.POST, "/employees").hasAnyAuthority("OWNER", "ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/employees/{employeeId}").hasAnyAuthority("OWNER", "ADMIN")
+			.antMatchers(HttpMethod.PUT, "/employees").hasAnyAuthority("OWNER", "ADMIN", "USER")
+			.antMatchers(HttpMethod.GET, "/", "/employees", "/employees/{employeeId}", "/employees/sort").hasAnyAuthority("OWNER", "ADMIN", "USER")
 			.anyRequest().authenticated()
-			.and()
-			.httpBasic()
-			.and()
-			.cors().and().csrf().disable();
+			.and().httpBasic()
+			.and().cors().and().csrf().disable();
 	}
 }
