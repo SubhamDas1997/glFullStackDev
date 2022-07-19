@@ -1,6 +1,6 @@
 -- Adding roles into roles table
--- 'USER' cannot add or delete employees, users or roles
--- 'ADMIN' cannot add or delete roles or users
+-- 'USER' cannot add or delete 'employees', 'users' or 'roles'
+-- 'ADMIN' cannot add or delete 'roles' or 'users'
 -- 'OWNER' role is of the highest order which access every API
 INSERT INTO ROLES (name) VALUES ('OWNER');
 INSERT INTO ROLES (name) VALUES ('ADMIN');

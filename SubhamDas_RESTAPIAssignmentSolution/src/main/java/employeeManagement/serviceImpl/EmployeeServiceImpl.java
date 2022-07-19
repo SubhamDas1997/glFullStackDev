@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if (obj.isPresent())
 			emp = obj.get();
 		else
-			throw new IllegalArgumentException("Did not find employee id - " + employeeId);
+			throw new IllegalArgumentException("Did not find employee id - '" + employeeId + "'");
 		return emp;
 	}
 
@@ -45,7 +46,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee findByFirstName(String firstName) {
-		return employeeRepo.findByFirstName(firstName).get();
+		Optional<Employee> obj = employeeRepo.findByFirstName(firstName);
+		Employee emp = null;
+		if (obj.isPresent())
+			emp = obj.get();
+		else
+			throw new IllegalArgumentException("Did not find employee with first name - '" + firstName + "'");
+		return emp;
 	}
 
 	@Override

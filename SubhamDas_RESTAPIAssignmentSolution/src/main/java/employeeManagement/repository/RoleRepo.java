@@ -6,5 +6,4 @@ import employeeManagement.entity.Role;
 
 public interface RoleRepo extends JpaRepository<Role, Integer> {
 
-	public Role getByName(String name);
 }

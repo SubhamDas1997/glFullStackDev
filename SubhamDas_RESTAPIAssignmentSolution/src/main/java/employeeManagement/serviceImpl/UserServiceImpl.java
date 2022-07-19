@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepo.getByUsername(username);
 		if(user == null)
-			throw new UsernameNotFoundException("Could not find user!!");
+			throw new UsernameNotFoundException("Bad credentials!");
 		return new EmployeeUserDetails(user);
 	}
 
@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		return userRepo.findAll();
 	}
 
-	//Need to solve this
 	@Override
 	public void saveUser(User user) {
 		userRepo.save(user);
